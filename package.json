@@ -1,0 +1,27 @@
+{
+  "name": "lapa-frutta",
+  "version": "1.0.0",
+  "description": "Next js project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilzio/lapa-frutta.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilzio/lapa-frutta/issues"
+  },
+  "homepage": "https://github.com/ilzio/lapa-frutta#readme",
+  "dependencies": {
+    "next": "^9.5.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
