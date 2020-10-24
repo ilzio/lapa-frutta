@@ -6,7 +6,7 @@ const Nav = ({ links }) => {
         <div className="Nav">
             {links.map(link => (
                 <Link href={link.href}>
-                    <a>{link.label}</a>
+                    <a className='navLink'>{link.label}</a>
 
                 </Link>
 
@@ -15,7 +15,10 @@ const Nav = ({ links }) => {
                .Nav{
                    color: #0f52da;
                    font-weight: bold;
-                    
+               }
+               .navLink{
+                   text-decoration: none;
+                   padding: 16px;
                }
             `}</style>
         </div>

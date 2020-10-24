@@ -25,6 +25,8 @@ function Header() {
             .Header{
                 width: 100%;
                 height: 56px;
+                padding: 16px;
+                box-sizing: border-box;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
