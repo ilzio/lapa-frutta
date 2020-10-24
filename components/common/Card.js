@@ -5,31 +5,41 @@ const Card = (props) => {
     return (
         <div className="Card">
             <div className="imageContainer" />
-            {props.title && (
-                <div className="titleContainer">
-                    <h3>
-                        {props.title}
-                    </h3>
-                </div>
-            )}
-            {props.text && (
-                <div className="textContainer">
-                    <p>
-                        {props.text}
-                    </p>
-                </div>
-            )}
-            {props.button && (
-                <div className="textContainer">
-                    <Button text={props.button.text} href={props.button.href} />
-                </div>
-            )}
+            <div className="contentContainer">
+                {props.title && (
+                    <div className="titleContainer">
+                        <h3>
+                            {props.title}
+                        </h3>
+                        
+                    </div>
+                )}
+                {/* {props.separator && ( */}
+                {true && (
+                    <hr className="cardSeparator"/>
+                )}
+                {props.text && (
+                    <div className="textContainer">
+                        <p>
+                            {props.text}
+                        </p>
+                    </div>
+                )}
+                {props.button && (
+                    <div className="textContainer">
+                        <Button text={props.button.text} href={props.button.href} />
+                    </div>
+                )}
+            </div>
             <style jsx>{`
                 .Card {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    
+                    max-width: 250px;
+                }
+                .contentContainer{
+                    text-align: center;
                 }
                 .titleContainer{
                     text-align: center;

@@ -2,7 +2,6 @@ import React from 'react'
 import Button from './Button'
 
 const SimpleSection = (props) => {
-    console.log(props)
     return (
         <div className="SimpleSection">
 
@@ -31,10 +30,27 @@ const SimpleSection = (props) => {
                 </>
             ) : (
                     <>
-                        <div className="text-Container">
-                            <div className="image-Container" />
-                            {props.text}
+                        
+                        <div className="content-Container">
+                            {props.title && (
+                                <div className="title-Container">
+                                    <h3>{props.title}</h3>
+                                </div>
+                            )}
+                            {props.text && (
+                                <div className="text-Container">
+                                    {props.text}
+                                </div>
+                            )}
+                            {props.button && (
+                                <Button
+                                    text={props?.button?.text}
+                                    href={props?.button?.href}
+                                />
+                            )}
                         </div>
+                        <div className="image-Container" />
+
                     </>
                 )
             }
