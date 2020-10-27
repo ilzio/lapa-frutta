@@ -2,7 +2,10 @@ import React from "react";
 
 const Hero = ({ image }) => (
   <div className="Hero">
-    <h1 className="centeredText">Isola Bella Frutta</h1>
+    <div className="centeredSection">
+      <h1 className="centeredText">Isola Bella Frutta</h1>
+      <h2 className="centeredText">Fresh fruit since 1942</h2>
+    </div>
     <style jsx>{`
       .Hero {
         width: 100%;
@@ -15,7 +18,7 @@ const Hero = ({ image }) => (
         align-items: center;
         justify-content: center;
       }
-      .centeredText {
+      .centeredSection {
         color: white;
       }
     `}</style>
