@@ -23,11 +23,31 @@ const cards = [
   },
 ];
 
-const slides = [
-  "/assets/Recipies/cannolo.jpg",
-  "/assets/Recipies/norma.jpg",
-  "/assets/Recipies/parmigiana.jpg",
-  "/assets/Recipies/puppetta.jpg",
+const recipies = [
+  {
+    name: "cannoli di ricotta",
+    difficulty: "medium",
+    time: 90,
+    image: "/assets/Recipies/cannolo.jpg",
+  },
+  {
+    name: "pasta alla norma",
+    difficulty: "easy",
+    time: 30,
+    image: "/assets/Recipies/norma.jpg",
+  },
+  {
+    name: "Parmigiana di melenzane",
+    difficulty: "medium",
+    time: 45,
+    image: "/assets/Recipies/parmigiana.jpg",
+  },
+  {
+    name: "Puppetti nde fogghi",
+    difficulty: "medium",
+    time: 30,
+    image: "/assets/Recipies/puppetta.jpg",
+  },
 ];
 
 const Home = () => (
@@ -45,7 +65,7 @@ const Home = () => (
     {/* test only */}
     <div style={{ height: "100px" }} />
     {/* test only */}
-    <Recipies slides={slides} />
+    <Recipies recipies={recipies} />
   </div>
 );
 
