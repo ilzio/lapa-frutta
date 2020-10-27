@@ -1,17 +1,11 @@
-import React, { Component } from 'react'
-import Layout from '../components/_wrapper/Layout'
-import Home from '../components/Home'
+import React from "react";
+import Layout from "../components/_wrapper/Layout";
+import Home from "../components/Home";
 
+const HomeContainer = () => (
+  <Layout>
+    <Home />
+  </Layout>
+);
 
-
-class HomeContainer extends Component {
-    render() {
-        return (
-                <Layout >
-                    <Home />
-                </Layout>
-        )
-    }
-}
-
-export default HomeContainer
+export default HomeContainer;

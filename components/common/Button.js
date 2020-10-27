@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Button = (props) => {
+const Button = (text) => {
     return (
         <div className="Button">
-            {props.text && (
-                props.text
+            {text && (
+                text
             )}
             <style jsx>{`
                 .Button{
