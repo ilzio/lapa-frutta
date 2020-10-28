@@ -2,18 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 
 const Slider = ({ slides }) => {
   const [showArrows, setShowArrows] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener("resize", handleArrowsVisibility);
-    handleArrowsVisibility
-  });
-
-  
-
   const slider = useRef(null);
-  
+
   const handleArrowsVisibility = () => {
-    console.log("called")
     if (slider.current.scrollWidth > slider.current.clientWidth) {
       setShowArrows(true);
     } else {
@@ -21,11 +12,14 @@ const Slider = ({ slides }) => {
     }
   };
 
+  useEffect(() => {
+    window.addEventListener("resize", handleArrowsVisibility);
+    handleArrowsVisibility();
+  });
+
   const onClick = (direction) => () => {
     if (direction === "right") {
-      console.log("direction: right");
       slider.current.scrollLeft += 350;
-      console.log();
     } else {
       slider.current.scrollLeft -= 350;
     }
@@ -34,11 +28,10 @@ const Slider = ({ slides }) => {
   return (
     <div className="Slider">
       <div ref={slider} className="sliderContainer">
-        {slides.map((slide) => {
-          return <div className="slide">{slide}</div>;
-        })}
+        {slides.map((slide) => (
+          <div className="slide">{slide}</div>
+        ))}
       </div>
-
       <div
         className="arrowContainer left"
         onClick={onClick("left")}
