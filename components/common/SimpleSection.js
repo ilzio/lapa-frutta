@@ -6,29 +6,37 @@ const SimpleSection = ({ imagePosition, image, title, text, button }) => {
     <article className="SimpleSection">
       {imagePosition === "left" ? (
         <>
-          <div className="image-Container" />
-          <div className="content-Container">
+          <div className="SimpleSection__image-container" />
+          <div className="SimpleSection__content-container">
             {title && (
-              <div className="title-Container">
+              <div className="SimpleSection__title-container">
                 <h3>{title}</h3>
               </div>
             )}
-            {text && <div className="text-Container"><p>{text}</p></div>}
+            {text && (
+              <div className="SimpleSection__text-container">
+                <p>{text}</p>
+              </div>
+            )}
             {button && <Button text={button?.text} href={button?.href} />}
           </div>
         </>
       ) : (
         <>
-          <div className="content-Container">
+          <div className="SimpleSection__content-container">
             {title && (
-              <div className="title-Container">
+              <div className="SimpleSection__title-container">
                 <h3>{title}</h3>
               </div>
             )}
-            {text && <div className="text-Container"><p>{text}</p></div>}
+            {text && (
+              <div className="SimpleSection__text-container">
+                <p>{text}</p>
+              </div>
+            )}
             {button && <Button text={button?.text} href={button?.href} />}
           </div>
-          <div className="image-Container" />
+          <div className="SimpleSection__image-container" />
         </>
       )}
       <style jsx>{`
@@ -39,13 +47,13 @@ const SimpleSection = ({ imagePosition, image, title, text, button }) => {
           justify-content: center;
           align-items: center;
         }
-        .content-Container {
+        .SimpleSection__content-container {
           display: flex;
           flex-direction: column;
           margin: 40px;
           max-width: 450px;
         }
-        .image-Container {
+        .SimpleSection__image-container {
           height: 200px;
           width: 200px;
           background: url(${image});
@@ -53,6 +61,9 @@ const SimpleSection = ({ imagePosition, image, title, text, button }) => {
           background-size: cover;
           background-repeat: no-repeat;
           border-radius: 50%;
+        }
+        .SimpleSection__text-container {
+          margin-bottom: 16px;
         }
       `}</style>
     </article>
