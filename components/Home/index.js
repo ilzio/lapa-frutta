@@ -11,7 +11,7 @@ import whyCards from '../../utils/whyCards';
 
 
 const Home = () => (
-  <div>
+  <main>
     <Hero image="/assets/image.jpeg" />
     <Melo />
     {/* test only */}
@@ -26,7 +26,7 @@ const Home = () => (
     <div style={{ height: "100px" }} />
     {/* test only */}
     <Recipies recipies={recipies} />
-  </div>
+  </main>
 );
 
 export default Home;

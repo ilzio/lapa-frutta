@@ -2,7 +2,7 @@ import React from "react";
 import SimpleSection from "../common/SimpleSection";
 
 const Melo = () => (
-  <div className="Melo">
+  <section className="Melo">
     <SimpleSection
       imagePosition="left"
       image="/assets/vicchiareddu.jpg"
@@ -14,7 +14,7 @@ const Melo = () => (
         href: "about",
       }}
     />
-  </div>
+  </section>
 );
 
 export default Melo;

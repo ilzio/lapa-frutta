@@ -17,7 +17,7 @@ const Recipies = ({ recipies }) => {
     ));
 
   return (
-    <div className="Recipies">
+    <section className="Recipies">
       <div className="headerCard">
         <Card
           image="/assets/cuncittina.jpeg"
@@ -32,7 +32,7 @@ const Recipies = ({ recipies }) => {
           justify-content: center;
         }
       `}</style>
-    </div>
+    </section>
   );
 };
 

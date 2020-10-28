@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const SimpleSection = ({ imagePosition, image, title, text, button }) => {
   return (
-    <div className="SimpleSection">
+    <article className="SimpleSection">
       {imagePosition === "left" ? (
         <>
           <div className="image-Container" />
@@ -13,7 +13,7 @@ const SimpleSection = ({ imagePosition, image, title, text, button }) => {
                 <h3>{title}</h3>
               </div>
             )}
-            {text && <div className="text-Container">{text}</div>}
+            {text && <div className="text-Container"><p>{text}</p></div>}
             {button && <Button text={button?.text} href={button?.href} />}
           </div>
         </>
@@ -25,7 +25,7 @@ const SimpleSection = ({ imagePosition, image, title, text, button }) => {
                 <h3>{title}</h3>
               </div>
             )}
-            {text && <div className="text-Container">{text}</div>}
+            {text && <div className="text-Container"><p>{text}</p></div>}
             {button && <Button text={button?.text} href={button?.href} />}
           </div>
           <div className="image-Container" />
@@ -55,7 +55,7 @@ const SimpleSection = ({ imagePosition, image, title, text, button }) => {
           border-radius: 50%;
         }
       `}</style>
-    </div>
+    </article>
   );
 };
 

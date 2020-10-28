@@ -2,7 +2,7 @@ import React from "react";
 import SimpleSection from "../common/SimpleSection";
 
 const OrderNow = () => (
-  <div className="OrderNow">
+  <section className="OrderNow">
     <SimpleSection
       imagePosition="right"
       image="assets/lapa-casci.jpg"
@@ -13,7 +13,7 @@ const OrderNow = () => (
         href: "about",
       }}
     />
-  </div>
+  </section>
 );
 
 export default OrderNow;

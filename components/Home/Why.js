@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../common/Card";
 
 const Why = ({ cards }) => (
-  <div className="Why">
+  <section className="Why">
     <div className="sectionTitleContainer">
       <h2>Why choose us</h2>
     </div>
@@ -32,7 +32,7 @@ const Why = ({ cards }) => (
             }
         `}
     </style>
-  </div>
+  </section>
 );
 
 export default Why;
