@@ -19,9 +19,9 @@ const Slider = ({ slides }) => {
 
   const onClick = (direction) => () => {
     if (direction === "right") {
-      slider.current.scrollLeft += 350;
+      slider.current.scrollLeft += 300;
     } else {
-      slider.current.scrollLeft -= 350;
+      slider.current.scrollLeft -= 300;
     }
   };
 
@@ -57,8 +57,11 @@ const Slider = ({ slides }) => {
           width: 100%;
           margin-bottom: 40px;
           padding: 0px 8px;
-          border: solid red 1px;
           position: relative;
+          margin: 24px 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         .sliderContainer {
           width: 100%;
@@ -70,6 +73,7 @@ const Slider = ({ slides }) => {
           scroll-behavior: smooth;
           -webkit-overflow-scrolling: touch;
           scroll-snap-type: x mandatory;
+          max-width: 1280px;
         }
         .arrowContainer {
           position: absolute;
@@ -101,7 +105,7 @@ const Slider = ({ slides }) => {
         .slide {
           padding: 0px 8px;
           height: 100%;
-          min-width: 350px;
+          min-width: 300px;
           scroll-snap-align: start;
         }
         .sliderImage {
