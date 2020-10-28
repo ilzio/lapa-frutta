@@ -1,21 +1,9 @@
 import React from "react";
 import Logo from "./Logo";
 import Nav from "./Nav";
+import links from '../../../utils/headerLinks'
 
-const links = [
-  {
-    label: "About Us",
-    href: "about",
-  },
-  {
-    label: "Why choose us",
-    href: "what",
-  },
-  {
-    label: "Order Online",
-    href: "order",
-  },
-];
+
 
 function Header() {
   return (
