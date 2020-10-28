@@ -3,10 +3,10 @@ import Link from "next/link";
 
 const Nav = ({ links }) => {
   return (
-    <div className="Nav">
+    <nav className="Nav">
       {links.map((link) => (
         <Link href={link.href}>
-          <a href={link.href} className="navLink">
+          <a href={link.href} className="Nav__link">
             {link.label}
           </a>
         </Link>
@@ -16,12 +16,15 @@ const Nav = ({ links }) => {
           color: #0f52da;
           font-weight: bold;
         }
-        .navLink {
+        .Nav__link {
           text-decoration: none;
           padding: 16px;
         }
+        .Nav__link:visited {
+          color: inherit
+        }
       `}</style>
-    </div>
+    </nav>
   );
 };
 
