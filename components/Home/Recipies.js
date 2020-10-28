@@ -1,10 +1,11 @@
 import React from "react";
+
 import Card from "../common/Card";
 import Slider from "../common/Slider";
 import RecipeCard from "./RecipeCard";
 
 const Recipies = ({ recipies }) => {
-
+ 
   const getRecipies = () =>
     recipies.map((recipie) => (
       <RecipeCard
