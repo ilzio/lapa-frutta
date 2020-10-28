@@ -1,9 +1,11 @@
 import React from "react";
+import Link from "next/link";
 
-const Button = ({ text, href }) => (
-  <div className="Button" type="button">
-    {text && text}
-
+const Button = ({ text, href, as='' }) => (
+  <>
+    <Link href={href} as={as}>
+      <div className="Button">{text}</div>
+    </Link>
     <style jsx>{`
       .Button {
         color: white;
@@ -11,9 +13,10 @@ const Button = ({ text, href }) => (
         padding: 12px 16px;
         width: max-content;
         border-radius: 8px;
+        cursor: pointer;
       }
     `}</style>
-  </div>
+  </>
 );
 
 export default Button;
