@@ -1,8 +1,14 @@
 import React from "react";
+import { useRouter } from "next/router";
 
-const RecipeCard = ({ difficulty, time, name, image }) => {
+const RecipeCard = ({ difficulty, time, name, image, slug }) => {
+  const router = useRouter();
+  const handleClick = (target) => () => {
+    const newUrl = target.toLowerCase().split(" ").join("-");
+    router.push(`/recipies/${newUrl}`);
+  };
   return (
-    <div className="RecipeCard">
+    <div className="RecipeCard" onClick={handleClick(name)}>
       <div className="nameContainer">
         <div className="RecipeCardOverlay" />
         <p className="RecipeCardText">{name}</p>
