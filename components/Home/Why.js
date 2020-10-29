@@ -1,11 +1,10 @@
 import React from "react";
 import Card from "../common/Card";
+import OrderNow from "./OrderNow";
 
 const Why = ({ cards }) => (
   <section className="Why">
-    <div className="Why__title-container">
-      <h2>Why choose us</h2>
-    </div>
+    <h2 className="Why__title">Why choose us</h2>
     <div className="Why__cards-container">
       {cards &&
         cards.map((card) => (
@@ -15,33 +14,42 @@ const Why = ({ cards }) => (
             text={card?.text}
             button={card?.button}
             bgPosition={card?.bgPosition}
+            textColor="#ffffff"
+            titleColor="#ffffff"
+            separator
+            separatorColor="#ffffff"
           />
         ))}
     </div>
+    <OrderNow />
     <style jsx>{`
       .Why {
         height: auto;
-        background-color: #0f52da;
-        color: white;
         padding: 40px 0;
         height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
+        background-color: #0f52da;
+        background-image: url("/assets/sicilia.svg");
+        background-size: 100px;
+        background-position: center;
+        background-repeat: repeat;
       }
-      .Why h2 {
-        text-shadow: 1.3px 1.3px black;
-      }
-      .Why__title-container {
+
+      .Why__title {
         text-align: center;
         margin-bottom: 32px;
+        color: #ffffff;
+        text-shadow: 1.3px 1.3px black;
       }
       .Why__cards-container {
         width: 100%;
         max-width: 1200px;
         display: flex;
         justify-content: space-between;
+        margin-bottom: 40px;
       }
     `}</style>
   </section>
