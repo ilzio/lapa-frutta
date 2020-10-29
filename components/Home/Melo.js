@@ -14,6 +14,14 @@ const Melo = () => (
         href: "about",
       }}
     />
+    <style jsx>{`
+      .Melo {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin: 80px 0;
+      }
+    `}</style>
   </section>
 );
 
