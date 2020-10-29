@@ -9,14 +9,14 @@ const RecipeCard = ({ difficulty, time, name, image, slug }) => {
   };
   return (
     <div className="RecipeCard" onClick={handleClick(name)}>
-      <div className="nameContainer">
-        <div className="RecipeCardOverlay" />
-        <p className="RecipeCardText">{name}</p>
+      <div className="RecipeCard__name-container">
+        <div className="RecipeCard__overlay" />
+        <p className="RecipeCard__text">{name}</p>
       </div>
-      <div className="infoContainer">
-        <div className="RecipeCardOverlay" />
-        <p className="RecipeCardText">difficulty: {difficulty}</p>
-        <p className="RecipeCardText">time: {time} min.</p>
+      <div className="RecipeCard__info-container">
+        <div className="RecipeCard__overlay" />
+        <p className="RecipeCard__text">difficulty: {difficulty}</p>
+        <p className="RecipeCard__text">time: {time} min.</p>
       </div>
       <style jsx>{`
         .RecipeCard {
@@ -39,30 +39,33 @@ const RecipeCard = ({ difficulty, time, name, image, slug }) => {
           border: solid transparent 2px;
           cursor: pointer;
         }
-        .RecipeCardOverlay {
+        .RecipeCard__overlay {
           position: absolute;
           top: 0;
           left: 0;
           height: 100%;
           width: 100%;
-          background-color: #000000ab;
+          background-color: #0f52da;
           border-radius: 8px;
         }
-        .RecipeCardText {
+        .RecipeCard__text {
           margin: 0px;
           color: white;
           position: relative;
           border-radius: 8px;
         }
-        .nameContainer {
+        .RecipeCard__name-container {
           text-align: center;
+          font-family: "Balsamiq Sans", cursive;
+          text-transform: capitalize;
         }
-        .infoContainer {
+        .RecipeCard__info-container {
           display: flex;
           justify-content: space-between;
+          font-family: "Balsamiq Sans", cursive;
         }
-        .nameContainer,
-        .infoContainer {
+        .RecipeCard__name-container,
+        .RecipeCard__info-container {
           position: relative;
           padding: 8px;
         }
