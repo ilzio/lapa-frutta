@@ -1,39 +1,32 @@
 import React from "react";
 import Button from "./Button";
 
-const SimpleSection = ({ imagePosition, image, title, text, button }) => {
+const SimpleSection = ({
+  imagePosition,
+  image,
+  title,
+  text,
+  button,
+  titleColor,
+  textColor,
+  bgPosition
+}) => {
   return (
     <article className="SimpleSection">
       {imagePosition === "left" ? (
         <>
           <div className="SimpleSection__image-container" />
           <div className="SimpleSection__content-container">
-            {title && (
-              <div className="SimpleSection__title-container">
-                <h3>{title}</h3>
-              </div>
-            )}
-            {text && (
-              <div className="SimpleSection__text-container">
-                <p>{text}</p>
-              </div>
-            )}
+            {title && <h3 className="SimpleSection__title">{title}</h3>}
+            {text && <p className="SimpleSection__text">{text}</p>}
             {button && <Button text={button?.text} href={button?.href} />}
           </div>
         </>
       ) : (
         <>
           <div className="SimpleSection__content-container">
-            {title && (
-              <div className="SimpleSection__title-container">
-                <h3>{title}</h3>
-              </div>
-            )}
-            {text && (
-              <div className="SimpleSection__text-container">
-                <p>{text}</p>
-              </div>
-            )}
+            {title && <h3 className="SimpleSection__title">{title}</h3>}
+            {text && <p className="SimpleSection__text">{text}</p>}
             {button && <Button text={button?.text} href={button?.href} />}
           </div>
           <div className="SimpleSection__image-container" />
@@ -41,28 +34,33 @@ const SimpleSection = ({ imagePosition, image, title, text, button }) => {
       )}
       <style jsx>{`
         .SimpleSection {
-          height: 300px;
+          height: auto;
           width: 100%;
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
+          padding: 40px;
           align-items: center;
+          max-width: 640px;
         }
         .SimpleSection__content-container {
           display: flex;
           flex-direction: column;
-          margin: 40px;
-          max-width: 450px;
+          max-width: 400px;
         }
         .SimpleSection__image-container {
           height: 200px;
           width: 200px;
           background: url(${image});
-          background-position: center;
+          background-position: ${bgPosition || "center"};
           background-size: cover;
           background-repeat: no-repeat;
           border-radius: 50%;
         }
-        .SimpleSection__text-container {
+        .SimpleSection__title {
+          color: ${titleColor || "#0f52da"};
+        }
+        .SimpleSection__text {
+          color: ${textColor || "#000000"};
           margin-bottom: 16px;
         }
       `}</style>
