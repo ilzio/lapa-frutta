@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const Button = ({ text, href, as='' }) => (
+const Button = ({ text, href, as = "" }) => (
   <>
     <Link href={href} as={as}>
       <div className="Button">{text}</div>
@@ -14,6 +14,7 @@ const Button = ({ text, href, as='' }) => (
         width: max-content;
         border-radius: 8px;
         cursor: pointer;
+        font-family: "Balsamiq Sans", cursive;
       }
     `}</style>
   </>
