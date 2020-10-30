@@ -10,7 +10,7 @@ const OrderNow = () => (
       image="assets/lapa-casci.jpg"
       bgPosition="left"
       title="Order now!"
-      text="We deliver in eastern Sicily using only traditional transportation technologies. Get fresh fruit on your table now!"
+      text="We deliver in eastern Sicily using only traditional transportation technologies.  Get fresh fruit on your table now!"
       textColor={lapaBlack}
       titleColor={lapaBlue}
       button={{
