@@ -12,6 +12,15 @@ const SimpleSection = ({
   textColor,
   bgPosition,
 }) => {
+  
+  function splitTextIntoParagraphs(textToSplit) {
+    const splitted = textToSplit.split("  ");
+    return splitted.map((paragraph) => (
+      <p className="SimpleSection__text" style={{ marginBottom: "8px" }}>
+        {paragraph}
+      </p>
+    ));
+  }
   return (
     <article className="SimpleSection">
       {imagePosition === "left" ? (
@@ -19,16 +28,24 @@ const SimpleSection = ({
           <div className="SimpleSection__image-container" />
           <div className="SimpleSection__content-container">
             {title && <h3 className="SimpleSection__title">{title}</h3>}
-            {text && <p className="SimpleSection__text">{text}</p>}
-            {button && <Button text={button?.text} href={button?.href} />}
+            {text && splitTextIntoParagraphs(text)}
+            {button && (
+              <div className="SimpleSection__button-container">
+                <Button text={button?.text} href={button?.href} />
+              </div>
+            )}
           </div>
         </>
       ) : (
         <>
           <div className="SimpleSection__content-container">
             {title && <h3 className="SimpleSection__title">{title}</h3>}
-            {text && <p className="SimpleSection__text">{text}</p>}
-            {button && <Button text={button?.text} href={button?.href} />}
+            {text && splitTextIntoParagraphs(text)}
+            {button && (
+              <div className="SimpleSection__button-container">
+                <Button text={button?.text} href={button?.href} />
+              </div>
+            )}
           </div>
           <div className="SimpleSection__image-container" />
         </>
@@ -62,7 +79,9 @@ const SimpleSection = ({
         }
         .SimpleSection__text {
           color: ${textColor || lapaBlack};
-          margin-bottom: 16px;
+        }
+        .SimpleSection__button-container{
+          margin-top: 8px;
         }
       `}</style>
     </article>
