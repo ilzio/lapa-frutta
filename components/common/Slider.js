@@ -5,6 +5,7 @@ const Slider = ({ slides }) => {
   const [showRightArrow, setShowRightArrow] = useState(false);
   const [scrolled, setScrolled] = useState(0);
   const slider = useRef(null);
+  const slideWidth = 300;
 
   const handleArrowsVisibility = () => {
     if (slider.current.scrollWidth > slider.current.clientWidth) {
@@ -25,11 +26,11 @@ const Slider = ({ slides }) => {
 
   const onClick = (direction) => () => {
     if (direction === "right") {
-      slider.current.scrollBy({ left: +300 });
-      setScrolled((prevState) => prevState + 300);
+      slider.current.scrollBy({ left: +slideWidth });
+      setScrolled((prevState) => prevState + slideWidth);
     } else {
-      slider.current.scrollBy({ left: -300 });
-      setScrolled((prevState) => prevState - 300);
+      slider.current.scrollBy({ left: -slideWidth });
+      setScrolled((prevState) => prevState - slideWidth);
     }
   };
 
@@ -57,9 +58,6 @@ const Slider = ({ slides }) => {
         <div className="Slider__arrow Slider__arrow--right" />
       </div>
       <style jsx>{`
-        * {
-          box-sizing: border-box;
-        }
         .Slider {
           height: 300px;
           width: 100%;
@@ -70,6 +68,7 @@ const Slider = ({ slides }) => {
           display: flex;
           justify-content: center;
           align-items: center;
+          box-sizing: border-box;
         }
         .Slider__container {
           width: 100%;
@@ -82,6 +81,7 @@ const Slider = ({ slides }) => {
           -webkit-overflow-scrolling: touch;
           max-width: 1280px;
           scroll-snap-type: x mandatory;
+          box-sizing: border-box;
         }
         .Slider__arrow-container {
           position: absolute;
@@ -101,18 +101,22 @@ const Slider = ({ slides }) => {
           transform: rotate(180deg);
         }
         .Slider__arrow-container--right {
-          right: 0;
+          right: 16px;
           top: 0;
         }
         .Slider__arrow-container--left {
-          left: 0;
+          left: 16px;
           top: 0;
         }
         .Slider__slide {
           padding: 0px 8px;
           height: 100%;
-          min-width: 300px;
+          min-width: ${slideWidth}px;
           scroll-snap-align: start;
+          box-sizing: border-box;
+        }
+        .Slider::-webkit-scrollbar{
+          display: none;
         }
       `}</style>
     </div>
