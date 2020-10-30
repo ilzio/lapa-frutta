@@ -1,4 +1,5 @@
 import React from "react";
+import { lapaBlack, lapaBlue } from "../../styles/colors";
 import Button from "./Button";
 
 const SimpleSection = ({
@@ -9,7 +10,7 @@ const SimpleSection = ({
   button,
   titleColor,
   textColor,
-  bgPosition
+  bgPosition,
 }) => {
   return (
     <article className="SimpleSection">
@@ -57,10 +58,10 @@ const SimpleSection = ({
           border-radius: 50%;
         }
         .SimpleSection__title {
-          color: ${titleColor || "#0f52da"};
+          color: ${titleColor || lapaBlue};
         }
         .SimpleSection__text {
-          color: ${textColor || "#000000"};
+          color: ${textColor || lapaBlack};
           margin-bottom: 16px;
         }
       `}</style>

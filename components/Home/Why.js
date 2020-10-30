@@ -1,4 +1,5 @@
 import React from "react";
+import { lapaBlue, lapaWhite } from "../../styles/colors";
 import Card from "../common/Card";
 import OrderNow from "./OrderNow";
 
@@ -14,10 +15,10 @@ const Why = ({ cards }) => (
             text={card?.text}
             button={card?.button}
             bgPosition={card?.bgPosition}
-            textColor="#ffffff"
-            titleColor="#ffffff"
+            textColor={lapaWhite}
+            titleColor={lapaWhite}
             separator
-            separatorColor="#ffffff"
+            separatorColor={lapaWhite}
           />
         ))}
     </div>
@@ -31,7 +32,7 @@ const Why = ({ cards }) => (
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-        background-color: #0f52da;
+        background-color: ${lapaBlue};
         background-image: url("/assets/sicilia.svg");
         background-size: 100px;
         background-position: center;
@@ -41,7 +42,7 @@ const Why = ({ cards }) => (
       .Why__title {
         text-align: center;
         margin-bottom: 32px;
-        color: #ffffff;
+        color: ${lapaWhite};
         text-shadow: 1.3px 1.3px black;
       }
       .Why__cards-container {

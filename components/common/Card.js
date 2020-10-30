@@ -1,5 +1,11 @@
 import React from "react";
 import Button from "./Button";
+import {
+  lapaBlue,
+  lapaWhite,
+  lapaYellow
+} from "../../styles/colors";
+import { cardImageShadow, cardTextShadow, cardTitleShadow } from "../../styles/shadows";
 
 const Card = ({
   title,
@@ -39,27 +45,27 @@ const Card = ({
           background-repeat: no-repeat;
           border-radius: 50%;
           margin-bottom: 16px;
-          box-shadow: 0.5px 0.5px #00000063;
+          box-shadow: ${cardImageShadow};
         }
         .Card__content-container {
           text-align: center;
         }
         .Card__title {
-          color: ${titleColor || "#0f52da"};
-          text-shadow: ${titleShadow || `0.5px 0.5px black`};
+          color: ${titleColor || lapaBlue};
+          text-shadow: ${titleShadow || cardTitleShadow}
         }
         .Card__separator {
           height: 2px;
           border: none;
-          background-color: ${separatorColor || `#ff0`};
+          background-color: ${separatorColor || lapaYellow};
           width: 100%;
         }
         .Card__text {
           text-align: center;
           font-size: 1.2em;
-          color: ${textColor || "#ffffff"};
+          color: ${textColor || lapaWhite};
           font-family: "Balsamiq Sans", cursive;
-          text-shadow: ${textShadow || `0.3px 0.3px black`};
+          text-shadow: ${textShadow || cardTextShadow};
         }
       `}</style>
     </div>

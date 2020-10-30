@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { lapaBlue } from "../../styles/colors";
 
 const Button = ({ text, href, as = "" }) => (
   <>
@@ -9,7 +10,7 @@ const Button = ({ text, href, as = "" }) => (
     <style jsx>{`
       .Button {
         color: white;
-        background-color: #0f52da;
+        background-color: ${lapaBlue};
         padding: 12px 16px;
         width: max-content;
         border-radius: 8px;

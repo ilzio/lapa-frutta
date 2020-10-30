@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { lapaBlue } from "../../styles/colors";
 
 const RecipeCard = ({ difficulty, time, name, image, slug }) => {
   const router = useRouter();
@@ -45,7 +46,7 @@ const RecipeCard = ({ difficulty, time, name, image, slug }) => {
           left: 0;
           height: 100%;
           width: 100%;
-          background-color: #0f52da;
+          background-color: ${lapaBlue};
           border-radius: 8px;
         }
         .RecipeCard__text {

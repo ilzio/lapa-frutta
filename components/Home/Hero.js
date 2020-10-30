@@ -1,4 +1,5 @@
 import React from "react";
+import { heroOverlay, lapaBlack, lapaWhite, lapaYellow } from "../../styles/colors";
 
 const Hero = ({ image }) => (
   <div className="Hero">
@@ -26,18 +27,18 @@ const Hero = ({ image }) => (
         left: 0;
         height: 100%;
         width: 100%;
-        background-color: #0000000f;
+        background-color: ${heroOverlay};
       }
       .Hero__centerd-section {
-        color: white;
+        color: ${lapaWhite};
         position: relative;
       }
       .Hero h1,
       .Hero h2 {
-        text-shadow: 2px 1px black;
+        text-shadow: 2px 1px ${lapaBlack};
       }
       .Hero h2 {
-        color: yellow;
+        color: ${lapaYellow};
       }
     `}</style>
   </div>

@@ -15,7 +15,6 @@ const Slider = ({ slides }) => (
         height: 300px;
         width: 100%;
         margin-bottom: 40px;
-        border: solid black;
         padding: 0px 8px;
       }
       .sliderContainer {
