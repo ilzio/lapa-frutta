@@ -1,14 +1,20 @@
 import React, { useRef, useState, useEffect } from "react";
 
 const Slider = ({ slides }) => {
-  const [showArrows, setShowArrows] = useState(false);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+  const [scrolled, setScrolled] = useState(0);
   const slider = useRef(null);
 
   const handleArrowsVisibility = () => {
     if (slider.current.scrollWidth > slider.current.clientWidth) {
-      setShowArrows(true);
+      scrolled === 0 ? setShowLeftArrow(false) : setShowLeftArrow(true);
+      scrolled >= slider.current.scrollLeftMax
+        ? setShowRightArrow(false)
+        : setShowRightArrow(true);
     } else {
-      setShowArrows(false);
+      setShowLeftArrow(false);
+      setShowRightArrow(false);
     }
   };
 
@@ -19,34 +25,36 @@ const Slider = ({ slides }) => {
 
   const onClick = (direction) => () => {
     if (direction === "right") {
-      slider.current.scrollLeft += 300;
+      slider.current.scrollBy({ left: +300 });
+      setScrolled((prevState) => prevState + 300);
     } else {
-      slider.current.scrollLeft -= 300;
+      slider.current.scrollBy({ left: -300 });
+      setScrolled((prevState) => prevState - 300);
     }
   };
 
   return (
     <div className="Slider">
-      <div ref={slider} className="sliderContainer">
+      <div ref={slider} className="Slider__container">
         {slides.map((slide) => (
-          <div className="slide">{slide}</div>
+          <div className="Slider__slide">{slide}</div>
         ))}
       </div>
       <div
-        className="arrowContainer left"
+        className="Slider__arrow-container Slider__arrow-container--left"
         onClick={onClick("left")}
         role="button"
-        style={{ display: `${showArrows ? "flex" : "none"}` }}
+        style={{ display: `${showLeftArrow ? "flex" : "none"}` }}
       >
-        <div className="leftArrow" />
+        <div className="Slider__arrow Slider__arrow--left" />
       </div>
       <div
-        className="arrowContainer right"
+        className="Slider__arrow-container Slider__arrow-container--right"
         onClick={onClick("right")}
         role="button"
-        style={{ display: `${showArrows ? "flex" : "none"}` }}
+        style={{ display: `${showRightArrow ? "flex" : "none"}` }}
       >
-        <div className="rightArrow" />
+        <div className="Slider__arrow Slider__arrow--right" />
       </div>
       <style jsx>{`
         * {
@@ -63,7 +71,7 @@ const Slider = ({ slides }) => {
           justify-content: center;
           align-items: center;
         }
-        .sliderContainer {
+        .Slider__container {
           width: 100%;
           height: 100%;
           display: flex;
@@ -72,45 +80,39 @@ const Slider = ({ slides }) => {
           overflow-y: hidden;
           scroll-behavior: smooth;
           -webkit-overflow-scrolling: touch;
-          scroll-snap-type: x mandatory;
           max-width: 1280px;
+          scroll-snap-type: x mandatory;
         }
-        .arrowContainer {
+        .Slider__arrow-container {
           position: absolute;
           height: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
         }
-        .arrowContainer.right {
+        .Slider__arrow {
+          height: 40px;
+          width: 40px;
+          background-image: url(${"/assets/arrow-right-transparency.svg"});
+          background-size: cover;
+          background-position: center;
+        }
+        .Slider__arrow--left {
+          transform: rotate(180deg);
+        }
+        .Slider__arrow-container--right {
           right: 0;
           top: 0;
         }
-        .arrowContainer.left {
+        .Slider__arrow-container--left {
           left: 0;
           top: 0;
         }
-
-        .rightArrow {
-          height: 40px;
-          width: 40px;
-          background-image: url(${"/assets/right-arrow.svg"});
-        }
-        .leftArrow {
-          height: 40px;
-          width: 40px;
-          background-image: url(${"/assets/right-arrow.svg"});
-          transform: rotate(180deg);
-        }
-        .slide {
+        .Slider__slide {
           padding: 0px 8px;
           height: 100%;
           min-width: 300px;
           scroll-snap-align: start;
-        }
-        .sliderImage {
-          max-width: 100%;
-          height: auto;
         }
       `}</style>
     </div>
