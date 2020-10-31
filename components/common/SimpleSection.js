@@ -10,7 +10,6 @@ const SimpleSection = ({
   button,
   titleColor,
   textColor,
-  bgPosition,
   size,
 }) => {
   function splitTextIntoParagraphs(textToSplit) {
@@ -22,28 +21,22 @@ const SimpleSection = ({
     ));
   }
 
-  function getSizeInfo(size) {
-    if (size === "l") {
+  function getSizeInfo(sizeProp) {
+    if (sizeProp === "s") {
       return {
-        cardWidth: 800,
-        imageSize: 200,
-        contentSize: 450,
-        gap: 80,
+        cardWidth: 400,
+        imageSize: 100,
       };
     }
-    if (size === "m") {
+    if (sizeProp === "m") {
       return {
         cardWidth: 600,
         imageSize: 150,
-        contentSize: 350,
-        gap: 60,
       };
     }
     return {
-      cardWidth: 400,
-      imageSize: 100,
-      contentSize: 200,
-      gap: 40,
+      cardWidth: 800,
+      imageSize: 200,
     };
   }
   const cardSize = getSizeInfo(size);
@@ -85,6 +78,7 @@ const SimpleSection = ({
       <style jsx>{`
         .SimpleSection {
           max-width: ${cardSize.cardWidth}px;
+          flex-direction: row;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -98,15 +92,16 @@ const SimpleSection = ({
           flex: 5.5;
         }
         .SimpleSection__image-container {
-          flex: 3;
-          display: flex;
           justify-content: center;
           align-items: center;
+          width: ${cardSize.imageSize}px;
+          height: 100%;
         }
         .SimpleSection__image {
-          width: ${cardSize.imageSize}px;
+          width: 100%;
           height: ${cardSize.imageSize}px;
           border-radius: 50%;
+          object-fit: fill;
         }
         .SimpleSection__title {
           color: ${titleColor || lapaBlue};
@@ -119,7 +114,9 @@ const SimpleSection = ({
         }
         @media screen and (max-width: 768px) {
           .SimpleSection {
-            flex-direction: ${imagePosition === 'rigth' ? 'column-reverse' : 'column' } ;
+            flex-direction: ${imagePosition === "right"
+              ? "column-reverse"
+              : "column"};
           }
           .SimpleSection__content-container {
             display: flex;
