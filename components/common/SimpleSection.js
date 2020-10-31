@@ -11,8 +11,8 @@ const SimpleSection = ({
   titleColor,
   textColor,
   bgPosition,
+  size,
 }) => {
-  
   function splitTextIntoParagraphs(textToSplit) {
     const splitted = textToSplit.split("  ");
     return splitted.map((paragraph) => (
@@ -21,11 +21,40 @@ const SimpleSection = ({
       </p>
     ));
   }
+
+  function getSizeInfo(size) {
+    if (size === "l") {
+      return {
+        cardWidth: 800,
+        imageSize: 200,
+        contentSize: 450,
+        gap: 80,
+      };
+    }
+    if (size === "m") {
+      return {
+        cardWidth: 600,
+        imageSize: 150,
+        contentSize: 350,
+        gap: 60,
+      };
+    }
+    return {
+      cardWidth: 400,
+      imageSize: 100,
+      contentSize: 200,
+      gap: 40,
+    };
+  }
+  const cardSize = getSizeInfo(size);
   return (
     <article className="SimpleSection">
       {imagePosition === "left" ? (
         <>
-          <div className="SimpleSection__image-container" />
+          <div className="SimpleSection__image-container">
+            <img className="SimpleSection__image" src={image} alt="" />
+          </div>
+          <div className="SimpleSection__spacer" />
           <div className="SimpleSection__content-container">
             {title && <h3 className="SimpleSection__title">{title}</h3>}
             {text && splitTextIntoParagraphs(text)}
@@ -47,31 +76,36 @@ const SimpleSection = ({
               </div>
             )}
           </div>
-          <div className="SimpleSection__image-container" />
+          <div className="SimpleSection__spacer" />
+          <div className="SimpleSection__image-container">
+            <img className="SimpleSection__image" src={image} alt="" />
+          </div>
         </>
       )}
       <style jsx>{`
         .SimpleSection {
-          height: auto;
-          width: 100%;
+          max-width: ${cardSize.cardWidth}px;
           display: flex;
-          justify-content: space-between;
-          padding: 40px;
+          justify-content: center;
           align-items: center;
-          max-width: 640px;
+          padding: 16px;
+          box-sizing: border-box;
+        }
+        .SimpleSection__spacer {
+          flex: 0.5;
         }
         .SimpleSection__content-container {
-          display: flex;
-          flex-direction: column;
-          max-width: 400px;
+          flex: 5.5;
         }
         .SimpleSection__image-container {
-          height: 200px;
-          width: 200px;
-          background: url(${image});
-          background-position: ${bgPosition || "center"};
-          background-size: cover;
-          background-repeat: no-repeat;
+          flex: 3;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .SimpleSection__image {
+          width: ${cardSize.imageSize}px;
+          height: ${cardSize.imageSize}px;
           border-radius: 50%;
         }
         .SimpleSection__title {
@@ -80,8 +114,23 @@ const SimpleSection = ({
         .SimpleSection__text {
           color: ${textColor || lapaBlack};
         }
-        .SimpleSection__button-container{
+        .SimpleSection__button-container {
           margin-top: 8px;
+        }
+        @media screen and (max-width: 768px) {
+          .SimpleSection {
+            flex-direction: ${imagePosition === 'rigth' ? 'column-reverse' : 'column' } ;
+          }
+          .SimpleSection__content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+          }
+          .SimpleSection__image {
+            margin-bottom: 16px;
+          }
         }
       `}</style>
     </article>
