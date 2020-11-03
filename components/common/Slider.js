@@ -1,38 +1,58 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Slider = ({ slides }) => {
+  const slideWidth = 300;
+  const slider = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
-  const [scrolled, setScrolled] = useState(0);
-  const slider = useRef(null);
-  const slideWidth = 300;
+  const [scrolled, setScrolled] = useState(null);
 
-  const handleArrowsVisibility = () => {
-    if (slider.current.scrollWidth > slider.current.clientWidth) {
-      scrolled === 0 ? setShowLeftArrow(false) : setShowLeftArrow(true);
-      scrolled >= slider.current.scrollLeftMax
-        ? setShowRightArrow(false)
-        : setShowRightArrow(true);
-    } else {
+  function handleArrowsVisibility() {
+    const atFirstSlide = slider.current.scrollLeft === 0;
+    const scrollMax = slider.current.scrollWidth - slider.current.clientWidth;
+    const atLastSlide = slider.current.scrollLeft >= scrollMax;
+
+    if (atFirstSlide) {
       setShowLeftArrow(false);
+      setShowRightArrow(true);
+    } else if (atLastSlide) {
+      setShowLeftArrow(true);
       setShowRightArrow(false);
+    } else {
+      setShowLeftArrow(true);
+      setShowRightArrow(true);
     }
+  }
+
+  // this is a trick!! change state in order to tell react something has changed and use "useEffect" to handle arrows visibility
+  const handleScroll = (e) => {
+    setScrolled(e.timeStamp);
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleArrowsVisibility);
     handleArrowsVisibility();
-  });
+  }, [scrolled]);
 
-  const onClick = (direction) => () => {
+  const handleClick = (direction) => () => {
     if (direction === "right") {
-      slider.current.scrollBy({ left: +slideWidth });
-      setScrolled((prevState) => prevState + slideWidth);
+      slider.current.scrollLeft += slideWidth;
     } else {
-      slider.current.scrollBy({ left: -slideWidth });
-      setScrolled((prevState) => prevState - slideWidth);
+      slider.current.scrollLeft -= slideWidth;
     }
   };
+
+  // component mount + unmount -> initial arrow visibility + add /remove event listeners
+  useEffect(() => {
+    // assigning slider.current to a variable because at the moment of unmont it will have changed, therefore throwing error: slider.current is null
+    const sliderCurrent = slider.current;
+    handleArrowsVisibility();
+    window.addEventListener("resize", handleArrowsVisibility);
+    sliderCurrent.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("resize", handleArrowsVisibility);
+      sliderCurrent.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="Slider">
@@ -43,7 +63,7 @@ const Slider = ({ slides }) => {
       </div>
       <div
         className="Slider__arrow-container Slider__arrow-container--left"
-        onClick={onClick("left")}
+        onClick={handleClick("left")}
         role="button"
         style={{ display: `${showLeftArrow ? "flex" : "none"}` }}
       >
@@ -51,7 +71,7 @@ const Slider = ({ slides }) => {
       </div>
       <div
         className="Slider__arrow-container Slider__arrow-container--right"
-        onClick={onClick("right")}
+        onClick={handleClick("right")}
         role="button"
         style={{ display: `${showRightArrow ? "flex" : "none"}` }}
       >
@@ -78,10 +98,11 @@ const Slider = ({ slides }) => {
           overflow-x: auto;
           overflow-y: hidden;
           scroll-behavior: smooth;
-          -webkit-overflow-scrolling: touch;
           max-width: 1280px;
           scroll-snap-type: x mandatory;
           box-sizing: border-box;
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
         }
         .Slider__arrow-container {
           position: absolute;
@@ -115,7 +136,7 @@ const Slider = ({ slides }) => {
           scroll-snap-align: start;
           box-sizing: border-box;
         }
-        .Slider::-webkit-scrollbar{
+        .Slider__container::-webkit-scrollbar {
           display: none;
         }
       `}</style>
