@@ -1,10 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "../components/_wrapper/Layout";
 import "../styles/main.scss";
+import breakpoints from "../styles/breakpoints";
 
 const CustomApp = ({ Component, pageProps }) => {
   const [breakpoint, setBreakpoint] = useState(undefined);
+
+  function getBreakPoints() {
+    if (window.innerWidth <= breakpoints.mobile) {
+      setBreakpoint(breakpoints.mobile);
+    } else if (window.innerWidth <= breakpoints.tablet) {
+      setBreakpoint(breakpoints.tablet);
+    } else {
+      setBreakpoint(breakpoints.desktop);
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', getBreakPoints);
+    getBreakPoints()
+  })
+
+  
 
   function hasLayout() {
     const router = useRouter();

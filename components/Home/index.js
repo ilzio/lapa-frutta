@@ -6,11 +6,12 @@ import Why from "./Why";
 import recipies from "../../utils/recipies";
 import whyCards from "../../utils/whyCards";
 
-const Home = () => (
+const Home = ({breakpoint}) => (
+  
   <main>
     <Hero image="/assets/image.jpeg" />
     <Melo />
-    <Why cards={whyCards} />
+    <Why cards={whyCards} breakpoint={breakpoint} />
 
     <Recipies recipies={recipies} />
   </main>
