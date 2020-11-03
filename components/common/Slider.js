@@ -5,7 +5,6 @@ const Slider = ({ slides }) => {
   const slider = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
-  const [scrolled, setScrolled] = useState(null);
 
   function handleArrowsVisibility() {
     const atFirstSlide = slider.current.scrollLeft === 0;
@@ -24,16 +23,11 @@ const Slider = ({ slides }) => {
     }
   }
 
-  // this is a trick!! change state in order to tell react something has changed and use "useEffect" to handle arrows visibility
-  const handleScroll = (e) => {
-    setScrolled(e.timeStamp);
+  function handleScroll() {
+    handleArrowsVisibility();
   };
 
-  useEffect(() => {
-    handleArrowsVisibility();
-  }, [scrolled]);
-
-  const handleClick = (direction) => () => {
+    const handleClick = (direction) => () => {
     if (direction === "right") {
       slider.current.scrollLeft += slideWidth;
     } else {
@@ -41,9 +35,9 @@ const Slider = ({ slides }) => {
     }
   };
 
-  // component mount + unmount -> initial arrow visibility + add /remove event listeners
+  // component mount + unmount
   useEffect(() => {
-    // assigning slider.current to a variable because at the moment of unmont it will have changed, therefore throwing error: slider.current is null
+    // sliderCurrent: when component unmonts slider.current will have changed, causing error "slider.current is null"
     const sliderCurrent = slider.current;
     handleArrowsVisibility();
     window.addEventListener("resize", handleArrowsVisibility);
