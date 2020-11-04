@@ -4,7 +4,7 @@ import Card from "../common/Card";
 import Slider from "../common/Slider";
 import RecipeCard from "./RecipeCard";
 
-const Recipies = ({ recipies }) => {
+const Recipies = ({ recipies, breakpoint }) => {
   const getRecipies = () =>
     recipies.map((recipie) => (
       <RecipeCard
@@ -28,7 +28,7 @@ const Recipies = ({ recipies }) => {
           separatorColor="#0f52da"
         />
       </div>
-      <Slider slides={getRecipies()} />
+      <Slider breakpoint={breakpoint} slides={getRecipies()} />
       <style jsx>{`
         .Recipies-card-container {
           display: flex;

@@ -23,12 +23,11 @@ function getCards(cardsFromProps) {
 
 const Why = ({ cards, breakpoint }) => {
   const cardsToDisplay = getCards(cards);
-
   return (
     <section className="Why">
       <h2 className="Why__title">Why choose us</h2>
-      {breakpoint === themeBreakpoints.tablet ? (
-        <Slider autoplay slides={cardsToDisplay} />
+      {breakpoint !== themeBreakpoints.desktop ? (
+        <Slider breakpoint={breakpoint} slides={cardsToDisplay} />
       ) : (
         <div className="Why__cards-container">{cardsToDisplay}</div>
       )}
