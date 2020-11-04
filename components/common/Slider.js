@@ -1,16 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
+import breakpoints from "../../styles/breakpoints";
 
-const Slider = ({ slides }) => {
+const Slider = ({ slides, breakpoint, autoplay = false }) => {
   const slideWidth = 300;
   const slider = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
-
+  const [shouldAutoplay, setAutoplay] = useState(autoplay);
+  const [intervalID, setintervalID] = useState(null);
+  const noArrows = false;
   function handleArrowsVisibility() {
+    
+    const biggerThanContent =
+      slider.current.scrollWidth > slider.current.clientWidth;
+    if (noArrows || !biggerThanContent) {
+      setShowLeftArrow(false);
+      setShowRightArrow(false);
+      return;
+    }
     const atFirstSlide = slider.current.scrollLeft === 0;
     const scrollMax = slider.current.scrollWidth - slider.current.clientWidth;
     const atLastSlide = slider.current.scrollLeft >= scrollMax;
-
     if (atFirstSlide) {
       setShowLeftArrow(false);
       setShowRightArrow(true);
@@ -22,12 +32,13 @@ const Slider = ({ slides }) => {
       setShowRightArrow(true);
     }
   }
-
   function handleScroll() {
     handleArrowsVisibility();
-  };
+  }
 
-    const handleClick = (direction) => () => {
+  const handleClick = (direction) => () => {
+    console.log("clicked should set autoplay to false");
+    setAutoplay(false);
     if (direction === "right") {
       slider.current.scrollLeft += slideWidth;
     } else {
@@ -35,11 +46,45 @@ const Slider = ({ slides }) => {
     }
   };
 
+  const autoScroll = () => {
+    if (slider.current !== null && slider.current.scrollWidth > slider.current.clientWidth ) {
+      const sliderCurrent = slider.current;
+      const scrollMax = sliderCurrent.scrollWidth - sliderCurrent.clientWidth;
+      const atLastSlide = sliderCurrent.scrollLeft >= scrollMax;
+
+      if (atLastSlide) {
+        sliderCurrent.scrollLeft = 0;
+      } else {
+        sliderCurrent.scrollLeft += slideWidth;
+      }
+    } 
+  };
+
+  function autoplayInit() {
+    if (shouldAutoplay) {
+      const id = setInterval(() => {
+        autoScroll();
+      }, 2000);
+      setintervalID(id);
+    }
+  }
+
+  function stopAutoPlay() {
+    clearInterval(intervalID);
+  }
+
+  useEffect(() => {
+    if (shouldAutoplay === false) {
+      stopAutoPlay();
+    }
+  }, [shouldAutoplay]);
+
   // component mount + unmount
   useEffect(() => {
     // sliderCurrent: when component unmonts slider.current will have changed, causing error "slider.current is null"
     const sliderCurrent = slider.current;
     handleArrowsVisibility();
+    autoplayInit();
     window.addEventListener("resize", handleArrowsVisibility);
     sliderCurrent.addEventListener("scroll", handleScroll);
     return () => {
@@ -49,10 +94,17 @@ const Slider = ({ slides }) => {
   }, []);
 
   return (
+
     <div className="Slider">
       <div ref={slider} className="Slider__container">
         {slides.map((slide) => (
-          <div className="Slider__slide">{slide}</div>
+          <div
+            className={`Slider__slide ${
+              breakpoint === breakpoints.mobile && "Slider__slide--mobile"
+            }`}
+          >
+            {slide}
+          </div>
         ))}
       </div>
       <div
@@ -108,7 +160,7 @@ const Slider = ({ slides }) => {
         .Slider__arrow {
           height: 40px;
           width: 40px;
-          background-image: url(${"/assets/arrow-right-transparency.svg"});
+          background-image: url(${"/assets/arrow-right-yellow.svg"});
           background-size: cover;
           background-position: center;
         }
@@ -129,6 +181,12 @@ const Slider = ({ slides }) => {
           min-width: ${slideWidth}px;
           scroll-snap-align: start;
           box-sizing: border-box;
+        }
+        .Slider__slide--mobile {
+          min-width: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
         }
         .Slider__container::-webkit-scrollbar {
           display: none;
