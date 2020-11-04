@@ -35,6 +35,7 @@ const Card = ({
           flex-direction: column;
           align-items: center;
           max-width: 250px;
+          height: 100%;
         }
         .Card__image-container {
           height: 140px;
