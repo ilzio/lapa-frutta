@@ -11,7 +11,7 @@ const Hero = ({ image }) => (
     <style jsx>{`
       .Hero {
         width: 100%;
-        height: 50vh;
+        height: 70vh;
         background: url(${image});
         background-size: cover;
         background-position: center;
@@ -20,6 +20,7 @@ const Hero = ({ image }) => (
         align-items: center;
         justify-content: center;
         position: relative;
+        text-align: center;
       }
       .Hero__overlay {
         position: absolute;
