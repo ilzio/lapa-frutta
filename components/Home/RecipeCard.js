@@ -35,6 +35,7 @@ const RecipeCard = ({ difficulty, time, name, image, slug }) => {
           box-sizing: border-box;
 
           border-radius: 8px;
+          max-width: 300px;
         }
         .RecipeCard:hover {
           border: solid transparent 2px;
