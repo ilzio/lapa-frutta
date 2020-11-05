@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { lapaBlue, lapaYellow } from "../../../styles/colors";
 
 const Nav = ({ links }) => {
   return (
@@ -13,15 +14,19 @@ const Nav = ({ links }) => {
       ))}
       <style jsx>{`
         .Nav {
-          color: #0f52da;
           font-weight: bold;
         }
         .Nav__link {
+          color: ${lapaBlue};
           text-decoration: none;
           padding: 16px;
         }
         .Nav__link:visited {
           color: inherit
+        }
+        .Nav__link:hover {
+          color: ${lapaYellow};
+          text-shadow: 1px 2px 6px ${lapaBlue}
         }
       `}</style>
     </nav>

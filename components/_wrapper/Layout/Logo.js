@@ -1,8 +1,16 @@
 import React from "react";
+import { useRouter } from "next/router";
+import {lapaWhite, lapaYellow} from '../../../styles/colors'
 
 const Logo = ({ image }) => {
+  const router = useRouter();
+
+  function goHome() {
+    router.push("/");
+  }
+
   return (
-    <div className="Logo">
+    <div onClick={goHome} className="Logo">
       <style jsx>{`
         .Logo {
           height: 40px;
@@ -13,8 +21,13 @@ const Logo = ({ image }) => {
           background-position: center;
           background-repeat: no-repeat;
           object-fit: cover;
-          box-sizing: border-box;
+          cursor: pointer;
+          border: solid 2.5px ${lapaWhite}
         }
+        .Logo:hover{
+          border: solid 2.5px ${lapaYellow}
+        }
+        
       `}</style>
     </div>
   );
