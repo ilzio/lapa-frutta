@@ -1,6 +1,7 @@
 import React from "react";
 import { lapaBlack, lapaBlue } from "../../styles/colors";
 import Button from "./Button";
+import { splitTextIntoParagraphs } from "../../utils/functions";
 
 const SimpleSection = ({
   imagePosition,
@@ -12,15 +13,6 @@ const SimpleSection = ({
   textColor,
   size,
 }) => {
-  function splitTextIntoParagraphs(textToSplit) {
-    const splitted = textToSplit.split("  ");
-    return splitted.map((paragraph) => (
-      <p className="SimpleSection__text" style={{ marginBottom: "8px" }}>
-        {paragraph}
-      </p>
-    ));
-  }
-
   function getSizeInfo(sizeProp) {
     if (sizeProp === "s") {
       return {
@@ -50,7 +42,10 @@ const SimpleSection = ({
           <div className="SimpleSection__spacer" />
           <div className="SimpleSection__content-container">
             {title && <h3 className="SimpleSection__title">{title}</h3>}
-            {text && splitTextIntoParagraphs(text)}
+            {text &&
+              splitTextIntoParagraphs(text, "SimpleSection__text", {
+                marginBottom: "8px",
+              })}
             {button && (
               <div className="SimpleSection__button-container">
                 <Button text={button?.text} href={button?.href} />
@@ -62,7 +57,11 @@ const SimpleSection = ({
         <>
           <div className="SimpleSection__content-container">
             {title && <h3 className="SimpleSection__title">{title}</h3>}
-            {text && splitTextIntoParagraphs(text)}
+            {text &&
+              splitTextIntoParagraphs(text, "SimpleSection__text", {
+                marginBottom: "8px",
+              })}
+
             {button && (
               <div className="SimpleSection__button-container">
                 <Button text={button?.text} href={button?.href} />
