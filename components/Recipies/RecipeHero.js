@@ -40,9 +40,8 @@ const RecipeHero = ({ image, name }) => (
       }
       .RecipeHero__title {
         text-shadow: 2px 1px ${lapaBlack};
-      }
-      .RecipeHero__title {
         color: ${lapaYellow};
+        text-transform: capitalize;
       }
     `}</style>
   </div>
