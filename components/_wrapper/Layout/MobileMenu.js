@@ -8,7 +8,7 @@ const MobileMenu = ({elements}) => {
       <MobileNav links={elements} />
       <style jsx>{`
         .MobileMenu {
-          z-index: 2;
+          z-index: 4;
           height: 100vh;
           width: 100%;
           position: absolute;
