@@ -20,6 +20,7 @@ const Custom404 = () => {
           height: calc(100vh - 112px);
           background-color: ${lapaWhite};
           position: relative;
+          overflow: hidden;
         }
         .Custom404__centered-container {
           width: 100%;
@@ -30,7 +31,7 @@ const Custom404 = () => {
           display: flex;
           justify-content: center;
           align-items: center;
-          background-color: ${lapaBlue}
+          background-color: ${lapaBlue};
         }
         .Custom404__title {
           color: ${lapaYellow};
@@ -38,7 +39,6 @@ const Custom404 = () => {
           text-shadow: 2px 1px ${lapaBlack};
           margin-top: 24px;
           z-index: 3;
-          
         }
         .Custom404__image {
           height: 120px;
@@ -47,7 +47,6 @@ const Custom404 = () => {
           animation: y 3s linear infinite alternate;
           position: relative;
           z-index: 2;
-
         }
         .Custom404__image-container {
           animation: x 8s linear infinite alternate;
