@@ -5,8 +5,8 @@ const Hero = ({ image }) => (
   <div className="Hero">
     <div className="Hero__overlay" />
     <div className="Hero__centerd-section">
-      <h1>Isola Bella Frutta</h1>
-      <h2>Fresh fruit since 1942</h2>
+      <h1 className="Hero__title">Isola Bella Frutta</h1>
+      <h2 className="Hero__subtitle">Fresh fruit since 1942</h2>
     </div>
     <style jsx>{`
       .Hero {
@@ -34,11 +34,11 @@ const Hero = ({ image }) => (
         color: ${lapaWhite};
         position: relative;
       }
-      .Hero h1,
-      .Hero h2 {
+      .Hero__title,
+      .Hero__subtitle {
         text-shadow: 2px 1px ${lapaBlack};
       }
-      .Hero h2 {
+      .Hero__subtitle {
         color: ${lapaYellow};
       }
     `}</style>
