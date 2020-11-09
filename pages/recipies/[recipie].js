@@ -1,13 +1,23 @@
 import React from "react";
+import InfoContainer from "../../components/Recipies/InfoContainer";
+import IngredientsContainer from "../../components/Recipies/IngredientsContainer";
+import InstructionsContainer from "../../components/Recipies/InstructionsContainer";
+import RecipeHero from "../../components/Recipies/RecipeHero";
 import retrievedRecipies from "../../utils/recipies";
 
 // component
 const RecipieContainer = ({ selectedRecipie } = undefined) => {
   return (
-    <div>
-      <h1>this page is about {selectedRecipie.name} </h1>
-      <img src={selectedRecipie.image} alt="" />
-    </div>
+    <>
+      <RecipeHero image={selectedRecipie.image} name={selectedRecipie.name} />
+      <InfoContainer 
+      difficulty={selectedRecipie.difficulty} 
+      time={selectedRecipie.time} 
+      />
+      <IngredientsContainer ingredients={selectedRecipie.ingredients} />
+      <InstructionsContainer instructions={selectedRecipie.instructions} />
+      
+    </>
   );
 };
 
