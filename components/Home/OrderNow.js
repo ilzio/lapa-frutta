@@ -14,7 +14,7 @@ const OrderNow = () => (
       titleColor={lapaBlue}
       button={{
         text: "Order now",
-        href: "about",
+        href: "shop",
       }}
     />
     <style jsx>{`

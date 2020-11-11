@@ -12,6 +12,6 @@ export default [
 {
     label: 'Order Online',
     navigation: 'scroll',
-    href: 'order',
+    href: 'shop',
   },
 ];
