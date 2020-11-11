@@ -15,7 +15,7 @@ const RecipeHero = ({ image, name }) => (
     <style jsx>{`
       .RecipeHero {
         width: 100%;
-        height: 40vh;
+        height: 60vh;
         background: url(${image});
         background-size: cover;
         background-position: center;

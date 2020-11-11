@@ -14,9 +14,10 @@ const InfoContainer = ({ difficulty, time }) => {
       <style jsx>{`
         .InfoContainer {
           width: 100%;
-          background: ${lapaBlue};
+          padding: 8px 0px;
           display: flex;
           justify-content: space-evenly;
+          background: ${lapaBlue};
           color: ${lapaWhite};
         }
         .InfoContainer__text-span {
