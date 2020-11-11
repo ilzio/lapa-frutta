@@ -1,0 +1,46 @@
+[
+  {
+    "name": "fruits and vegetables",
+    "image": "/assets/products/frutta.jpeg",
+    "description": "fresh from our land",
+    "data": [
+      {
+        "name": "oranges",
+        "quantity": "1kg",
+        "price": 5
+      },
+      {
+        "name": "tomatoes",
+        "quantity": "1kg",
+        "price": 2
+      },
+      {
+        "name": "potatoes",
+        "quantity": "1kg",
+        "price": 1
+      }
+    ]
+  },
+  {
+    "name": "oil and wine",
+    "image": "/assets/products/oil-wine.jpeg",
+    "description": "crafted with our hands",
+    "data": [
+      {
+        "name": "extra virgin olive oil",
+        "quantity": "1lt",
+        "price": 8
+      },
+      {
+        "name": "red wine",
+        "quantity": "1lt",
+        "price": 5
+      },
+      {
+        "name": "white wine",
+        "quantity": "1lt",
+        "price": 5
+      }
+    ]
+  }
+]
